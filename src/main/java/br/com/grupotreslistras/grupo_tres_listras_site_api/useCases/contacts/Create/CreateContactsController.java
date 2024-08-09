@@ -1,6 +1,7 @@
 package br.com.grupotreslistras.grupo_tres_listras_site_api.useCases.contacts.Create;
 
 import br.com.grupotreslistras.grupo_tres_listras_site_api.entities.Contact;
+import br.com.grupotreslistras.grupo_tres_listras_site_api.providers.kafka.producer.KafkaProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

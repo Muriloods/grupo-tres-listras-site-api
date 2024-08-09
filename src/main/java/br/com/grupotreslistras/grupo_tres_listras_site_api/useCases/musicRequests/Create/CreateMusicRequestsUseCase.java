@@ -2,8 +2,10 @@ package br.com.grupotreslistras.grupo_tres_listras_site_api.useCases.musicReques
 
 import br.com.grupotreslistras.grupo_tres_listras_site_api.entities.MusicRequest;
 import br.com.grupotreslistras.grupo_tres_listras_site_api.entities.Requestor;
+import br.com.grupotreslistras.grupo_tres_listras_site_api.providers.kafka.producer.KafkaProducer;
 import br.com.grupotreslistras.grupo_tres_listras_site_api.repositories.MusicRequests.MusicRequestsRepository;
 import br.com.grupotreslistras.grupo_tres_listras_site_api.useCases.requestors.Create.CreateRequestorsUseCase;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ public class CreateMusicRequestsUseCase {
     CreateRequestorsUseCase createRequestorsUseCase;
     @Autowired
     MusicRequestsRepository repository;
+    @Autowired
+    private KafkaProducer kafkaProducer;
 
     public MusicRequest execute(String eventId, MusicRequest musicRequest) {
         Requestor req = createRequestorsUseCase.execute(musicRequest.getRequestor());
